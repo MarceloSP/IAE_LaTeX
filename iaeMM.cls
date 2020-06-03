@@ -1,8 +1,7 @@
 %% iaeMM.cls, v-1.0 marcelomsp
 %% Copyright 2012-2016 by abnTeX2 group at https://www.abntex.net.br/ 
 %%
-%% The Current Maintainer of this work is the ACE-E team, led
-%% by Marcelo Silveira Pereira.
+%% 
 %%
 %% This work consists of the file iaeMM.cls.
 
@@ -960,9 +959,9 @@
 \OnehalfSpacing
 \begin{flushleft}
 \begin{center}{
-	\hspace{-1.5cm}MINISTÉRIO DA DEFESA \\
-	\hspace{-1.5cm}COMANDO DA AERONÁUTICA\\
-	\hspace{-1.5cm}\underline{INSTITUTO DE AERONÁUTICA E ESPAÇO} \\
+	\hspace{-1.5cm}MINISTÉRIO DO GOVERNO\\
+	\hspace{-1.5cm}COMANDO DO MINISTÉRIO\\
+	\hspace{-1.5cm}\underline{INSTITUTO DA REBIMBOCA DA PARAFUSETA} \\
 	\hspace{-1.5cm}\Divisao \\
 }\end{center}
 
@@ -1036,7 +1035,8 @@ Nível Inferior: \nivelInferior\\
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|X|}
 		\hline
 		\multicolumn{1}{|>{\hsize=\dimexpr\hsize+1\tabcolsep+1\arrayrulewidth\relax}X|}{
-			\parbox[c]{\hsize}{\centering \includegraphics[height=18.5mm]{iae_logo.png}}}
+			\parbox[c]{\hsize}{\centering \includegraphics[height=15mm]{github_logo.png}}}
+%\includegraphics[height=18.5mm]{iae_logo.png}}}
 		&
 		\multicolumn{5}{>{\hsize=\dimexpr5\hsize+8\tabcolsep+4\arrayrulewidth\relax}X}{
 			\parbox[c]{\dimexpr0.94\hsize}{\centering \small{\textbf{FOLHA DE \\IDENTIFICAÇÃO DE DOCUMENTO \\(FI)}}}}
@@ -1255,3 +1255,101 @@ Nível Inferior: \nivelInferior\\
 \newpage
 \SingleSpacing
 }
+
+
+
+%%% ISTO É O ANTIGO CONTEÚDO DO ARQUIVO SETUP.TEX
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\newsubfloat{figure}
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+\graphicspath{{./Figures/}} 
+% ---
+% Pacotes adicionais, usados no anexo do modelo de folha de identificação
+% ---
+\usepackage{multicol}
+\usepackage{multirow}
+% ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{cite}
+\usepackage[noabbrev]{cleveref}
+
+\usepackage{icomma}
+
+\usepackage{tabularx}
+\usepackage{calc}
+\usepackage{float}
+
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{lastpage}
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf,abnt-repeated-author-omit=yes,abnt-emphasize=bf]{abntex2cite}	                 % Citações padrão ABNT
+
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+	%pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+	pdfsubject={\imprimirpreambulo},
+	pdfcreator={LaTeX with abnTeX2},
+	pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+	colorlinks=true,       		% false: boxed links; true: colored links
+	linkcolor=black,          	% color of internal links
+	citecolor=black,        		% color of links to bibliography
+	filecolor=black,      	% color of file links
+	urlcolor=blue,
+	bookmarksdepth=4
+}
+\makeatother
+% --- 

@@ -1,0 +1,174 @@
+\documentclass[12pt,openright,oneside,a4paper,english,brazil]{iaeMM}
+% ----------------------------------
+% Definindo o layout do documento
+
+% ----------------------------------
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+%-----------------------------------
+% Definições do documento
+
+
+\def\Titulo{Influência do Coronavírus e da batida da asa da borboleta no sul da Ucrânia.}
+
+\def\CodIAE{123-000000/X0010}
+
+\def\CodDiv{ABC-EF-001-2020}
+
+\def\Divisao{DIVISÃO DE ESTUDOS DO BALDE DE ABOBRINHA}
+
+\def\Origem{ABC}
+
+\def\Aprovador{Adão \textbf{Fulano} de Tal - Pat. Esp.}
+
+\def\FuncaoAprovador{Chefe da TRIBO}
+
+\def\Revisor{Abel \textbf{Fulano} de Tal - Pat. Esp.}
+
+\def\FuncaoRevisor{Chefe da TRIBO-OCA}
+
+\def\Sigilo{Restrito}
+\def\Volume{1}
+\def\TotalVolumes{1}
+\def\Data{01/04/2020} % Campo* DD/MM/AAAA.
+
+\def\Autori{Caim \textbf{Fulano} de Tal - Pat. Esp.}
+\def\FuncaoAutori{Chefe da TRIBO-OCA-REDE}
+
+
+\def\Original{VDIR-GC-DT} % TODO: vai pra classe, dado que não muda!
+
+\def\Copias{DIV1, DIV2, DIV3}
+
+\def\PalavrasChave{Índio, Rede, Borboleta}
+
+\def\Keywords{Indian, Hammock, Butterfly}
+
+\def\PalavrasChaveIndexacao{Índio, Rede, Borboleta}
+
+\def\ArquivoEletronico{123-000000-X0010.pdf}
+
+\def\CodSIGTEC{}
+
+\def\Observacoes{}
+
+\def\Resumo{O presente documento apresenta cálculos preliminares para a turbulência do bater de asas da borboleta.}
+
+\def\Abstract{The book is on the Table.}
+
+\def\Projeto{BRB01}
+\def\InicioCodigo{123} 
+\def\nivelSuperior{Não há}
+\def\nivelInferior{Não há}
+
+
+
+%-----------------------------------
+% Seleciona o idioma do documento (conforme pacotes do babel)
+
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+\imprimircapa
+\setcounter{page}{1}
+\imprimirfolhaidentificacao
+%\imprimirfolhadestinatarios
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}[Resumo]
+ \Resumo
+
+ \textbf{Palavras-chave}: \PalavrasChave.
+\end{resumo}% resumo em inglês
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+   \Abstract
+ 
+   \noindent 
+   \textbf{Keywords}: \Keywords.
+ \end{otherlanguage*}
+\end{resumo}\newpage
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ---
+% Corpo do Relatório
+% ---
+
+Ei Girardi.
+
+Melhor a gente ei.
+
+Por favor, gerar mais texto, imagens e figuras aleatórias para testar a classe.
+%\input{./Chapter1/Chapter1}
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+% ---
+% Inicia os apêndices
+% ---
+\begin{apendicesenv}
+
+%\input{./Appendix6/Appendix6.tex}
+
+%\input{./Appendix7/Appendix7.tex}
+
+%\input{./Appendix8/Appendix8.tex}
+
+%\input{./Appendix9/Appendix9.tex}
+
+%\input{./Appendix10/Appendix10.tex}
+
+%\input{./Appendix11/Appendix11.tex}
+
+\end{apendicesenv}
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{Referencias}
+
+
+
+\end{document}
