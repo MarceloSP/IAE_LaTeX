@@ -27,6 +27,18 @@
 \DeclareOption{sumario=abnt-6027-2012}{%
   \setboolean{ABNTEXsumario-abnt-6027-2012}{true}
   \setboolean{ABNTEXsumario-tradicional}{false}}
+
+% Nomes "dummy" a serem sobrescritos com o arquivos não rastreados: nome do ministério, comando, instituto e o logo do último.
+\newcommand{\ministerio}{MINISTÉRIO DO GOVERNO}
+\newcommand{\comando}{COMANDO DO MINISTÉRIO}
+\newcommand{\instituto}{INSTITUTO DA REBIMBOCA DA PARAFUSETA}
+\newcommand{\colocaLogo}{\includegraphics[height=15mm]{github_logo.png}}
+%\input{nomes_e_logo.tex}
+
+% Redefine os 4 comandos anteriores.
+\DeclareOption{oficial}{\input{nomesOficiais.tex}}
+
+
 %
 % Repassa demais opcoes a memoir	
 %
@@ -69,7 +81,7 @@
 % ------------------------------------------------------------------------
 
 % ---
-% Do pacote de if/them/else
+% Do pacote de if/then/else
 \newcommand{\abntex@ifnotempty}[2]{\ifthenelse{\not\equal{#1}{}}{#2}{}}
 % ---
 
@@ -953,15 +965,16 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
+
 % ---
 % Impressão da Capa
 \newcommand{\imprimircapa}{%
 \OnehalfSpacing
 \begin{flushleft}
 \begin{center}{
-	\hspace{-1.5cm}MINISTÉRIO DO GOVERNO\\
-	\hspace{-1.5cm}COMANDO DO MINISTÉRIO\\
-	\hspace{-1.5cm}\underline{INSTITUTO DA REBIMBOCA DA PARAFUSETA} \\
+	\hspace{-1.5cm}\ministerio\\
+	\hspace{-1.5cm}\comando\\
+	\hspace{-1.5cm}\underline{\instituto} \\
 	\hspace{-1.5cm}\Divisao \\
 }\end{center}
 
@@ -1035,8 +1048,7 @@ Nível Inferior: \nivelInferior\\
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|X|}
 		\hline
 		\multicolumn{1}{|>{\hsize=\dimexpr\hsize+1\tabcolsep+1\arrayrulewidth\relax}X|}{
-			\parbox[c]{\hsize}{\centering \includegraphics[height=15mm]{github_logo.png}}}
-%\includegraphics[height=18.5mm]{iae_logo.png}}}
+			\parbox[c]{\hsize}{\centering \colocaLogo }}
 		&
 		\multicolumn{5}{>{\hsize=\dimexpr5\hsize+8\tabcolsep+4\arrayrulewidth\relax}X}{
 			\parbox[c]{\dimexpr0.94\hsize}{\centering \small{\textbf{FOLHA DE \\IDENTIFICAÇÃO DE DOCUMENTO \\(FI)}}}}
@@ -1255,8 +1267,6 @@ Nível Inferior: \nivelInferior\\
 \newpage
 \SingleSpacing
 }
-
-
 
 %%% ISTO É O ANTIGO CONTEÚDO DO ARQUIVO SETUP.TEX
 

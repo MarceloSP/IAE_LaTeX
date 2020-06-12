@@ -28,6 +28,17 @@
 \DeclareOption{sumario=abnt-6027-2012}{%
   \setboolean{ABNTEXsumario-abnt-6027-2012}{true}
   \setboolean{ABNTEXsumario-tradicional}{false}}
+
+% Nomes "dummy" a serem sobrescritos com o arquivos não rastreados: nome do ministério, comando, instituto e o logo do último.
+\newcommand{\ministerio}{MINISTÉRIO DO GOVERNO}
+\newcommand{\comando}{COMANDO DO MINISTÉRIO}
+\newcommand{\instituto}{INSTITUTO DA REBIMBOCA DA PARAFUSETA}
+\newcommand{\colocaLogo}{\includegraphics[height=15mm]{github_logo.png}}
+%\input{nomes_e_logo.tex}
+
+% Redefine os 4 comandos anteriores.
+\DeclareOption{oficial}{\input{nomesOficiais.tex}}
+
 %
 % Repassa demais opcoes a memoir	
 %
