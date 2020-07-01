@@ -16,18 +16,9 @@
 \RequirePackage{ifthen}
 
 % Opções de diagramação de sumários
-% sumario=tradicional    : Sumário tradicional do LaTeX/Memoir
-% sumario=abnt-6027-2012 : Sumário conforme recomendação da ABNT NBR 6027:2012
-\newboolean{ABNTEXsumario-tradicional}     %true=titles of chapter/appendix in uppercase
-\newboolean{ABNTEXsumario-abnt-6027-2012} 
-\setboolean{ABNTEXsumario-tradicional}{false}
-\setboolean{ABNTEXsumario-abnt-6027-2012}{true}
-\DeclareOption{sumario=tradicional}{%
-  \setboolean{ABNTEXsumario-tradicional}{true}%
-  \setboolean{ABNTEXsumario-abnt-6027-2012}{false}}
-\DeclareOption{sumario=abnt-6027-2012}{%
-  \setboolean{ABNTEXsumario-abnt-6027-2012}{true}
-  \setboolean{ABNTEXsumario-tradicional}{false}}
+% sumario=abnt-6027-2012: Sumário conforme recomendação da ABNT NBR 6027:2012, 
+% que soh pode ser usado com memoir v3.6k ou superior
+
 %
 % Repassa demais opcoes a memoir	
 %
@@ -36,16 +27,6 @@
 }
 \ProcessOptions\relax
 \LoadClass{memoir}
-
-% sumario=abnt-6027-2012 : Sumário conforme recomendação da ABNT NBR 6027:2012, que
-%    soh pode ser usado com memoir v3.6k ou superior
-%    \settocpreprocessor \changes{v3.6k}{2012/09/18}{Added}
-\ifdefined\settocpreprocessor
-\else
-  \setboolean{ABNTEXsumario-tradicional}{true}
-  \setboolean{ABNTEXsumario-abnt-6027-2012}{false}
-\fi
-
 
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
@@ -91,18 +72,10 @@
 \RequirePackage[brazil]{babel}
 %
 % Nomes constantes do abnTeX2 em portugues (definicoes padroes)
-\newcommand{\folhaderostoname}{Folha de rosto}
-\newcommand{\epigraphname}{Ep\'igrafe}
-\newcommand{\dedicatorianame}{Dedicat\'oria}
-\newcommand{\errataname}{Errata}
-\newcommand{\agradecimentosname}{Agradecimentos}
 \newcommand{\anexoname}{ANEXO}
 \newcommand{\anexosname}{Anexos}
 \newcommand{\apendicename}{AP\^ENDICE}
 \newcommand{\apendicesname}{Ap\^endices}
-\newcommand{\orientadorname}{Orientador:}
-\newcommand{\coorientadorname}{Coorientador:}
-\newcommand{\folhadeaprovacaoname}{Folha de Aprova\c{c}\~ao}
 \newcommand{\resumoname}{Resumo} 
 \newcommand{\listadesiglasname}{Lista de Abreviaturas e Siglas}
 \newcommand{\listadesimbolosname}{Lista de S\'imbolos}
@@ -124,18 +97,10 @@
 }
 \addto\captionsenglish{% ingles
   %% adjusts names from abnTeX2
-  \renewcommand{\folhaderostoname}{Title Page}
-  \renewcommand{\epigraphname}{Epigraph}
-  \renewcommand{\dedicatorianame}{Dedication}
-  \renewcommand{\errataname}{Errata Sheet}
-  \renewcommand{\agradecimentosname}{Acknowledgements}
   \renewcommand{\anexoname}{ANNEX}
   \renewcommand{\anexosname}{Annex}
   \renewcommand{\apendicename}{APPENDIX}
   \renewcommand{\apendicesname}{Appendix}
-  \renewcommand{\orientadorname}{Supervisor:}
-  \renewcommand{\coorientadorname}{Co-supervisor:}
-  \renewcommand{\folhadeaprovacaoname}{Approval}
   \renewcommand{\resumoname}{Abstract} 
   \renewcommand{\listadesiglasname}{List of Abbreviations and Acronyms}
   \renewcommand{\listadesimbolosname}{List of Symbols}
@@ -428,15 +393,9 @@
 % insere o hifen no anexo/apendice do toc
 \cftinsertcode{A}{\renewcommand{\cftchapteraftersnum}{\hfill\textendash\hfill}}
 
-% No caso de Sumario (TOC) tradicional
-\ifthenelse{\boolean{ABNTEXsumario-tradicional}}{}{} % essa linha não faz nada,
-                                                     % mas se houver necessidade de alterar o comportamento
-                                                     % do sumário tradicional altere aqui.
-
 % No caso de Sumario (TOC) especifico da ABNT-6027-2012
 
 \makeatletter
-\ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{
   \settocpreprocessor{chapter}{%
   \let\tempf@rtoc\f@rtoc%
   \def\f@rtoc{%
@@ -447,61 +406,58 @@
   \def\f@rtoc{%
   \texorpdfstring{\MakeTextUppercase{\tempf@rtoc}}{\tempf@rtoc}}%
   }
-}{}
 \makeatother
 %
-\ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{%
   
-  \cftsetindents{part}{0em}{\cftlastnumwidth}
-  \cftsetindents{chapter}{0em}{\cftlastnumwidth}
-  \cftsetindents{section}{0em}{\cftlastnumwidth}
-  \cftsetindents{subsection}{0em}{\cftlastnumwidth}
-  \cftsetindents{subsubsection}{0em}{\cftlastnumwidth}
-  \cftsetindents{paragraph}{0em}{\cftlastnumwidth}
-  \cftsetindents{subparagraph}{0em}{\cftlastnumwidth}
+\cftsetindents{part}{0em}{\cftlastnumwidth}
+\cftsetindents{chapter}{0em}{\cftlastnumwidth}
+\cftsetindents{section}{0em}{\cftlastnumwidth}
+\cftsetindents{subsection}{0em}{\cftlastnumwidth}
+\cftsetindents{subsubsection}{0em}{\cftlastnumwidth}
+\cftsetindents{paragraph}{0em}{\cftlastnumwidth}
+\cftsetindents{subparagraph}{0em}{\cftlastnumwidth}
   %
-  \renewcommand{\tocprintchapter}{%
-    \addtocontents{toc}{\cftsetindents{chapter}{0em}{\cftlastnumwidth}}}
-  %
-  \renewcommand{\tocinnonumchapter}{%
-    \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}%
+\renewcommand{\tocprintchapter}{\addtocontents{toc}{\cftsetindents{chapter}{0em}{\cftlastnumwidth}}}
+
+\renewcommand{\tocinnonumchapter}{%
+	\addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}%
     \cftinserthook{toc}{A}}
   %
-  \renewcommand{\tocprintchapternonum}{%
+\renewcommand{\tocprintchapternonum}{%
     \addtocontents{toc}{\cftsetindents{chapter}{\cftlastnumwidth}{2em}}}
   %
-  \renewcommand{\tocpartapendices}{%
+\renewcommand{\tocpartapendices}{%
     \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
     \cftinserthook{toc}{A}}
   %
-  \renewcommand{\tocpartanexos}{%
+\renewcommand{\tocpartanexos}{%
     \addtocontents{toc}{\cftsetindents{part}{\cftlastnumwidth}{2em}}
     \cftinserthook{toc}{A}}
   %
-  \setlength{\cftbeforechapterskip}{1em}
+\setlength{\cftbeforechapterskip}{1em}
   %
   % Fontes das entradas do sumario
   %
-  \renewcommand{\cftpartfont}{\bfseries\larger}
+\renewcommand{\cftpartfont}{\bfseries\larger}
   %
-  \renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
-  \renewcommand{\cftchapterpagefont}{\normalsize\cftchapterfont}
+\renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
+\renewcommand{\cftchapterpagefont}{\normalsize\cftchapterfont}
   %
-  \renewcommand{\cftsectionfont}{\ABNTEXsectionfont}
-  \renewcommand{\cftsectionpagefont}{\cftsectionfont}
+\renewcommand{\cftsectionfont}{\ABNTEXsectionfont}
+\renewcommand{\cftsectionpagefont}{\cftsectionfont}
   %
-  \renewcommand{\cftsubsectionfont}{\ABNTEXsubsectionfont}
-  \renewcommand{\cftsubsectionpagefont}{\cftsubsectionfont}
+\renewcommand{\cftsubsectionfont}{\ABNTEXsubsectionfont}
+\renewcommand{\cftsubsectionpagefont}{\cftsubsectionfont}
   %
-  \renewcommand{\cftsubsubsectionfont}{\ABNTEXsubsubsectionfont}
-  \renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
+\renewcommand{\cftsubsubsectionfont}{\ABNTEXsubsubsectionfont}
+\renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
   %
-  \renewcommand{\cftparagraphfont}{\ABNTEXsubsubsubsectionfont}
-  \renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
-  %
-  % Ajusta entrada Referencias
-  %
-  \renewcommand{\bibsection}{%
+\renewcommand{\cftparagraphfont}{\ABNTEXsubsubsubsectionfont}
+\renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
+%
+% Ajusta entrada Referencias
+%
+\renewcommand{\bibsection}{%
     \chapter*{\bibname}
     \bibmark
     \ifnobibintoc\else
@@ -510,17 +466,13 @@
     \fi
     \prebibhook
 }
-  
-}{}
 
 % Comando que simula a finalizacao de uma parte no bookmark e
 % adiciona espaco de \part no sumario
 \newcommand{\phantompart}{%
   \bookmarksetup{startatroot}%
   \phantomsection%
-  \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{%
-    \addtocontents{toc}{\vspace{\cftbeforechapterskip}}}{%
-    \addtocontents{toc}{\vspace{\cftbeforepartskip}}}%
+  \addtocontents{toc}{\vspace{\cftbeforechapterskip}}
 }
 % -----
 
@@ -643,117 +595,9 @@
 
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
-% Comandos de dados para CAPA e FOLHA DE ROSTO 
-% ------------------------------------------------------------------------
-% ------------------------------------------------------------------------
-
-% Comandos de dados - titulo do documento
-\newcommand{\titulo}[1]{\title{#1}}
-\newcommand{\imprimirtitulo}{\thetitle}
-
-% Comandos de dados - autor (use \and para multiplos autores)
-\newcommand{\autor}[1]{\author{#1}}
-\newcommand{\imprimirautor}{\theauthor}
-
-% Comandos de dados - data
-\let\olddate\date
-\renewcommand{\date}[1]{\AtBeginDocument{\olddate{#1}}}
-\newcommand{\data}[1]{\date{#1}}
-\newcommand{\imprimirdata}{\thedate}
-
-% Comandos de dados - instituicao
-\providecommand{\imprimirinstituicao}{}
-\newcommand{\instituicao}[1]{\renewcommand{\imprimirinstituicao}{#1}}
-
-% Comandos de dados - local
-\providecommand{\imprimirlocal}{}
-\newcommand{\local}[1]{\renewcommand{\imprimirlocal}{#1}}
-
-% Comandos de dados - preambulo
-\providecommand{\imprimirpreambulo}{}
-\newcommand{\preambulo}[1]{\renewcommand{\imprimirpreambulo}{#1}}
-
-% Comandos de dados - orientador
-\providecommand{\imprimirorientadorRotulo}{}
-\providecommand{\imprimirorientador}{}
-\newcommand{\orientador}[2][\orientadorname]%
-  {\renewcommand{\imprimirorientadorRotulo}{#1}%
-   \renewcommand{\imprimirorientador}{#2}}
-
-% Comandos de dados - coorientador
-\providecommand{\imprimircoorientadorRotulo}{}
-\providecommand{\imprimircoorientador}{}
-\newcommand{\coorientador}[2][\coorientadorname]%
-  {\renewcommand{\imprimircoorientadorRotulo}{#1}%
-   \renewcommand{\imprimircoorientador}{#2}}
-
-% Comandos de dados - tipo de trabalho
-\providecommand{\imprimirtipotrabalho}{}
-\newcommand{\tipotrabalho}[1]{\renewcommand{\imprimirtipotrabalho}{#1}}
-
-% ------------------------------------------------------------------------
-% ------------------------------------------------------------------------
 % Comandos e ambientes de editoracao PRE-TEXTUAIS
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
-
-% ---
-% Ambiente para definicao da Capa
-\newenvironment{capa}{\begin{titlingpage}}{\end{titlingpage}\cleardoublepage}
-% ---
-
-% ---
-% Ficha catalografica (Dados internacionais de
-% catalogação-na-publicacao)
-\newenvironment{fichacatalografica}{%
-    \thispagestyle{empty}
-    \begin{SingleSpacing}
-      \ABNTEXfontereduzida
-}{%   
-    \end{SingleSpacing}%
-}%
-% ---
-
-% ---
-% Errata
-\newenvironment{errata}[1][\errataname]{%
-   \pretextualchapter{#1}
-  }{\cleardoublepage}
-% ---
-
-% ---
-% Folha de aprovacao - NBR 14724/2011 - 4.2.1.3
-\newenvironment{folhadeaprovacao}[1][\folhadeaprovacaoname]{%
-   \clearpage%
-   \PRIVATEbookmarkthis{#1}%
-   \begin{Spacing}{1.0}
-}{\end{Spacing}\cleardoublepage}   
-% ---
-
-% ---
-% Dedicatoria
-\newenvironment{dedicatoria}[1][]{%
-   \ifthenelse{\equal{#1}{}}{%
-    \PRIVATEbookmarkthis{\dedicatorianame}
-    }{\pretextualchapter{#1}}
-  }{\cleardoublepage}
-% ---
-
-% ---
-% Agradecimentos
-\newenvironment{agradecimentos}[1][\agradecimentosname]{%
-   \pretextualchapter{#1}
-  }{\cleardoublepage}
-% ---
-
-% ---
-% Epigrafe
-\newenvironment{epigrafe}[1][]{%
-   \ifthenelse{\equal{#1}{}}{%
-    \PRIVATEbookmarkthis{\epigraphname}
-    }{\pretextualchapter{#1}}
-  }{\cleardoublepage}
-% ---
 
 % ---
 % Resumo e abstracts em diferentes idiomas - NBR 14724/2011
@@ -821,10 +665,7 @@
 \newcommand{\PRIVATEapendiceconfig}[2]{%
  \setboolean{abntex@apendiceousecao}{true}%
  \renewcommand{\appendixname}{#1}
- \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{
-   \renewcommand{\appendixtocname}{\texorpdfstring{\uppercase{#2}}{#2}}
-  }{%
-  \renewcommand{\appendixtocname}{#2}} 
+ \renewcommand{\appendixtocname}{\texorpdfstring{\uppercase{#2}}{#2}}
  \renewcommand{\appendixpagename}{#2}
  \switchchapname{#1}% Corrected from \switchapname -> \switchchapname
  \renewcommand*{\cftappendixname}{#1 \space}
@@ -984,10 +825,6 @@ Elaborado por: \\
 \parbox[c]{0.55\hsize}{\centering \Autori \\ \FuncaoAutori}
 \vspace*{3mm}
 
-\vspace*{12mm}
-\parbox[c]{0.55\hsize}{\centering \Autorii \\ \FuncaoAutorii}
-\vspace*{3mm}
-
 {\color{black}
 Revisado por:\\
 \vspace*{12mm}
@@ -1084,8 +921,7 @@ Nível Inferior: \nivelInferior\\
 	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
 		\begin{tabular}{l}
 			\scriptsize{9-AUTOR(ES)} \\
-			\hspace*{0.25cm} \small{\Autori} \\
-			\hspace*{0.25cm} \small{\Autorii}
+			\hspace*{0.25cm} \small{\Autori}
 		\end{tabular}}
 	\\ \hline	
 	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
