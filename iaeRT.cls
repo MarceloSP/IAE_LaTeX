@@ -1,4 +1,4 @@
-%% iaeRT.cls, v-1.0 marcelomsp
+%% iaeRT.cls, v-1.1 marcelomsp araujolma lavrallr
 %% Copyright 2012-2016 by abnTeX2 group at https://www.abntex.net.br/ 
 %%
 %%
@@ -10,7 +10,7 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{iaeRT}[2018/07/01]
+\ProvidesClass{iaeRT}[2021/01/08]
 \RequirePackage{ifthen}
 
 % Opções de diagramação de sumários
@@ -27,9 +27,6 @@
 
 % Redefine os 4 comandos anteriores.
 \DeclareOption{oficial}{\input{nomesOficiais.tex}}
-
-% Redefine os 4 comandos anteriores.
-\DeclareOption{muitosAutores}{\def\muitosAutores}
 
 %
 % Repassa demais opcoes a memoir	
@@ -190,7 +187,7 @@
 % ---
 % Fontes padroes de part, chapter, section, subsection e subsubsection
 \newcommand{\ABNTEXchapterfont}{\bfseries}
-\newcommand{\ABNTEXchapterfontsize}{\LARGE}
+\newcommand{\ABNTEXchapterfontsize}{\Large}%{\LARGE}
 
 \newcommand{\ABNTEXpartfont}{\ABNTEXchapterfont}
 \newcommand{\ABNTEXpartfontsize}{\ABNTEXchapterfontsize}
@@ -198,7 +195,7 @@
 \newcommand{\ABNTEXsectionfont}{\ABNTEXchapterfont}
 \newcommand{\ABNTEXsectionfontsize}{\Large}
 
-\newcommand{\ABNTEXsubsectionfont}{\normalfont}
+\newcommand{\ABNTEXsubsectionfont}{\ABNTEXchapterfont}%{\normalfont}
 \newcommand{\ABNTEXsubsectionfontsize}{\large}
 
 \newcommand{\ABNTEXsubsubsectionfont}{\ABNTEXsubsectionfont}
@@ -865,71 +862,61 @@
 	\end{flushright}
 \end{minipage}
 
-%Elaborado por: \\
-%
-%\Autori\\
-%\Autorii\\
-%\Autoriii\\
-%\Autoriv\\
-%\Autorv\\
-%\Autorvi\\
-%\Autorvii\\
-%\Autorviii\\
-%\Autorix\\
-%\Autorx
-%
-%\vspace*{3mm}
-%
-%Revisado por:\\
-%\Revisori\\
-%\Revisorii
-%
-%\vspace*{3mm}
-%
+Elaborado por: \\
+
+\Autori\\
+\Autorii\\
+\Autoriii\\
+\Autoriv\\
+\Autorv
+
+\vspace*{3mm}
+
+Revisado por:\\
+\Revisori\\
+\Revisorii
+
+\vspace*{3mm}
+
 %Aprovado por:\\
-%\vspace*{10mm}
+%\vspace*{5mm}
 %\begin{center}
 %\Aprovador
 %\end{center}
 
-Elaborado por: \\
-\vspace*{12mm}
-\parbox[c]{0.55\hsize}{\centering \Autori \\ \FuncaoAutori}
-\vspace*{3mm}
-
-% coloca o autor 2 apenas se ele tiver sido definido!
-\ifdefined\Autorii
-{\vspace*{12mm}
-\parbox[c]{0.55\hsize}{\centering \Autorii\\ \FuncaoAutorii}
-\vspace*{3mm}}
-\else{}
-\fi
-
-
-{\color{black}
-Revisado por:\\
-\vspace*{12mm}
-\parbox[c]{0.55\hsize}{\centering \Revisor \\ \FuncaoRevisor}
-
-\vspace*{3mm}}
-
 Aprovado por:\\
-\vspace*{12mm}
-\parbox[c]{0.55\hsize}{\centering \Aprovador \\ \FuncaoAprovador}
-\vspace*{3mm}
+\Aprovadori
+
+
+%Elaborado por: \\
+%\vspace*{12mm}
+%\parbox[c]{0.55\hsize}{\centering \Autori \\ \FuncaoAutori}
+%\vspace*{3mm}
+%
+%{\color{black}
+%Revisado por:\\
+%\vspace*{12mm}
+%\parbox[c]{0.55\hsize}{\centering \Revisor \\ \FuncaoRevisor}
+%
+%\vspace*{3mm}}
+%
+%Aprovado por:\\
+%\vspace*{12mm}
+%\parbox[c]{0.55\hsize}{\centering \Aprovador \\ \FuncaoAprovador}
+%\vspace*{3mm}
 
 \vfill
 % Coloque os locais onde estão o original e as cópias deste documento
 \noindent Original: \Original \\
 Cópias: \Copias
 \vspace{-0.2cm}
-================================================== \\
+======================================================================= \\
 Palavras chave: \PalavrasChave \\
-================================================== \\
+======================================================================= \\
 \parbox[c]{\hsize}{\centering ARTICULAÇÃO}
 Nível Superior: \nivelSuperior\\
 Nível Inferior: \nivelInferior\\
-==================================================
+=======================================================================
 \end{flushleft}
 \newpage
 \SingleSpacing
@@ -958,12 +945,12 @@ Nível Inferior: \nivelInferior\\
 		&
 		\multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{
 		\hspace*{-0.2cm}
-		\begin{tabular}{l} 
+		\begin{tabular}{l}
 			\footnotesize{1-DOC.N$\degree$: \CodDiv}\\ 
 			\footnotesize{Código: \CodIAE}\vspace{6pt}\\
 			\footnotesize{2-DATA: \Data}
 		\end{tabular}}
-		\\ \hline		
+		\\ \hline
 		
 	\multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{
 		\begin{tabular}{l}
@@ -1002,17 +989,11 @@ Nível Inferior: \nivelInferior\\
 	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
 		\begin{tabular}{l}
 			\scriptsize{9-AUTOR(ES)} \\
-     		\hspace*{0.25cm} \small{\Autori}
-%			\hspace*{0.25cm} \small{\Autori}\\
-%			\hspace*{0.25cm} \small{\Autorii}\\									
-%			\hspace*{0.25cm} \small{\Autoriii}\\									
-%			\hspace*{0.25cm} \small{\Autoriv}\\
-%			\hspace*{0.25cm} \small{\Autorv}\\
-%			\hspace*{0.25cm} \small{\Autorvi}\\
-%			\hspace*{0.25cm} \small{\Autorvii}\\			
-%			\hspace*{0.25cm} \small{\Autorviii}\\
-%			\hspace*{0.25cm} \small{\Autorix}\\
-%			\hspace*{0.25cm} \small{\Autorx}					
+			\hspace*{0.25cm} \small{\Autori}\\
+			\hspace*{0.25cm} \small{\Autorii}\\
+			\hspace*{0.25cm} \small{\Autoriii}\\
+			\hspace*{0.25cm} \small{\Autoriv}\\
+			\hspace*{0.25cm} \small{\Autorv}
 		\end{tabular}}
 	\\ \hline	
 	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
@@ -1044,7 +1025,7 @@ Nível Inferior: \nivelInferior\\
 		\begin{tabular}{l}
 			\scriptsize{13-RESUMO} \\
 			\hspace*{0.25cm}
-			\parbox[c][70mm][t]{\dimexpr0.94\hsize}{\small{\Resumo}} \\
+			\parbox[c][30mm][t]{\dimexpr0.94\hsize}{\small{\Resumo}} \\
 		\end{tabular}}
 	\\ \hline
 	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
@@ -1074,6 +1055,215 @@ Nível Inferior: \nivelInferior\\
 \SingleSpacing
 }
 
+% Impressão da FAF
+
+\usepackage{fmtcount} % escrever numero por extenso
+\newcommand\twodigits[1]{%
+   \ifnum#1<10 0#1\else #1\fi
+}
+
+\newcommand{\imprimirfolhafluxo}{%
+\OnehalfSpacing
+\begin{flushleft}
+	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|X|}
+		\hline
+		\multicolumn{1}{|>{\hsize=\dimexpr\hsize+1\tabcolsep+1\arrayrulewidth\relax}X|}{
+			\parbox[c]{\hsize}{\centering \colocaLogo }}
+		&
+		\multicolumn{5}{>{\hsize=\dimexpr5\hsize+8\tabcolsep+4\arrayrulewidth\relax}X}{
+			\parbox[c]{\dimexpr0.94\hsize}{\centering \small{\textbf{FOLHA DE ACOMPANHAMENTO \\DO FLUXO DA DOCUMENTAÇÃO \\(FAF)}}}}
+		&
+		\multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{
+		\hspace*{-0.2cm}
+		\begin{tabular}{l} 
+			\footnotesize{TIPO DO DOC.}\\
+			\hspace*{0.25cm}
+			    \footnotesize{Relatório Técnico}\\
+			\footnotesize{DATA:} %\\
+			%\hspace*{0.25cm}
+			    \footnotesize{\Data}
+		\end{tabular}}
+		\\ \hline		
+		
+	\multicolumn{5}{|>{\hsize=\dimexpr5\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{
+		\begin{tabular}{p{0.5\textwidth}}
+			\parbox[c]{\dimexpr0.9\hsize}{\scriptsize{TÍTULO DO DOCUMENTO} \\
+			%\hspace*{0.25cm}
+			\footnotesize{\Titulo}} \\
+		\end{tabular}}
+		&
+	\multicolumn{4}{>{\hsize=\dimexpr4\hsize+10\tabcolsep+5\arrayrulewidth\relax}X|}{
+		\begin{tabular}{l}
+			\scriptsize{PROJETO} \\
+			%\hspace*{0.25cm} 
+			\footnotesize{Código: \InicioCodigo} \\  %Código: 590 \\
+			%\hspace*{0.25cm} 
+			\footnotesize{Título: \Projeto}  %Título: VLS
+		\end{tabular}}
+	\\ \hline
+
+	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
+		\begin{tabular}{l}
+			\scriptsize{AUTOR(ES):} \\
+			%\hspace*{0.25cm}
+			\small{\Autori}\\
+			%\hspace*{0.25cm}
+			\small{\Autorii}\\
+			%\hspace*{0.25cm}
+			\small{\Autoriii}\\
+			%\hspace*{0.25cm}
+			\small{\Autoriv}\\
+			%\hspace*{0.25cm} 
+			%\small{\Autorv}\\
+			%\hspace*{0.25cm} 
+			%\small{\Autorvi}\\
+			%\hspace*{0.25cm} 
+			%\small{\Autorvii}\\			
+			%\hspace*{0.25cm} 
+			%\small{\Autorviii}\\
+			%\hspace*{0.25cm} 
+			%\small{\Autorix}\\
+			%\hspace*{0.25cm}
+			%\small{\Autorx}	\\				
+			%\hspace*{0.25cm} 
+			%\small{\Autorxi}
+		\end{tabular}}
+	\\ \hline	
+	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
+		\begin{tabular}{l}
+			\scriptsize{APROVAÇÃO DO CONTEÚDO} \\
+			\scriptsize{NOME DO RESPONSÁVEL: \small{\AprovadorConteudo}} \\
+			\scriptsize{ASSINATURA: \rule{0.8\hsize}{0.15mm}} \\
+			\scriptsize{DATA DE REMESSA PARA FORMATAÇÃO: \_\_/\_\_/\_\_\_\_} \\
+		\end{tabular}}
+	\\ \hline
+	
+	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
+		\begin{tabular}{l}
+			\scriptsize{FORMATAÇÃO} \\
+			\scriptsize{NOME DO EXECUTOR: \small{\ResponsavelFormatacao}} \\
+			\scriptsize{ASSINATURA: \rule{0.8\hsize}{0.15mm}} \\
+			\scriptsize{DATA DE REMESSA PARA APROVAÇÃO DE FORMA: \_\_/\_\_/\_\_\_\_} \\
+		\end{tabular}}
+	\\ \hline
+
+	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
+		\begin{tabular}{l}
+			\scriptsize{APROVAÇÃO DE FORMA} \\
+			\scriptsize{NOME DO RESPONSÁVEL: \small{\AprovadorForma}} \\
+			\scriptsize{ASSINATURA: \rule{0.8\hsize}{0.15mm}} \\
+			\scriptsize{DATA DE REMESSA PARA REPRODUÇÃO: \_\_/\_\_/\_\_\_\_} \\
+		\end{tabular}}
+	\\ \hline
+
+	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
+		\begin{tabular}{l}
+			\scriptsize{APROVAÇÃO DE ORIGINAL} \\
+			\scriptsize{NOME DO RESPONSÁVEL: \small{\AprovadorOriginal}} \\
+			\scriptsize{ASSINATURA: \rule{0.8\hsize}{0.15mm}} \\
+			\scriptsize{DATA DE REMESSA PARA REPRODUÇÃO: \_\_/\_\_/\_\_\_\_} \\
+		\end{tabular}}
+	\\ \hline
+
+	\multicolumn{5}{|>{\hsize=\dimexpr5\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{
+		\begin{tabular}{p{0.5\textwidth}}
+			\scriptsize{REPRODUÇÃO} \\
+			\scriptsize{GRAU DE SIGILO: \Sigilo} \\
+			\scriptsize{Nº DO DOCUMENTO: \CodIAE} \\
+			%\hspace*{0.25cm}
+			\footnotesize{Cópias: \twodigits{\NumCopias}  (\numberstringnum{\NumCopias}[f])} \\
+			%\hspace*{0.25cm} \footnotesize{} \\
+		\end{tabular}}
+		&
+	\multicolumn{4}{>{\hsize=\dimexpr4\hsize+10\tabcolsep+5\arrayrulewidth\relax}X|}{
+		\begin{tabular}{l}
+			\scriptsize{CONSOLIDAÇÃO E ARQUIVO} \\
+			%\hspace*{0.25cm} 
+			\scriptsize{RECEBIDO EM: \_\_/\_\_/\_\_\_\_} \\
+			\scriptsize{CONCLUÍDO EM: \_\_/\_\_/\_\_\_\_} \\
+			%\hspace*{0.25cm} 
+			\scriptsize{RESPONSÁVEL:}  %Título: VLS
+		\end{tabular}}
+	\\ \hline
+	\multicolumn{5}{|>{\hsize=\dimexpr5\hsize+4\tabcolsep+2\arrayrulewidth\relax}X|}{
+		\begin{tabular}{p{0.5\textwidth}}
+			\scriptsize{DESTINATÁRIOS:} \\
+			%\hspace*{0.25cm}
+			\scriptsize{VDIR-GC-DT} \\
+			\scriptsize{\Copias} \\
+			%\hspace*{0.25cm} \footnotesize{} \\
+		\end{tabular}}
+		&
+	\multicolumn{4}{>{\hsize=\dimexpr4\hsize+10\tabcolsep+5\arrayrulewidth\relax}X|}{
+		\begin{tabular}{l}
+			\scriptsize{OBSERVAÇÕES E NOTAS:} \\
+			%\hspace*{0.25cm} 
+			\scriptsize{} \\  %Código: 590 \\
+			%\hspace*{0.25cm} 
+			\scriptsize{}  %Título: VLS
+		\end{tabular}}
+	\\ \hline
+\end{tabularx}	
+\end{flushleft}
+\newpage
+\SingleSpacing
+}
+
+
+% Impressão da LD
+
+
+% Please add the following required packages to your document preamble:lista
+% \usepackage{multirow}
+\newcommand{\imprimirlistadestinatarios}{%
+\OnehalfSpacing
+\begin{flushleft}
+
+\begin{tabularx}{\textwidth}{|p{0.1\textwidth}|p{0.12\textwidth}|p{0.32\textwidth}|X|X|X|X|X|X|}
+\hline
+\multirow{2}{*}{\parbox[c]{\hsize}{\centering \colocaLogo }} & \multicolumn{2}{c|}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}\textbf{LISTA DE DESTINATÁRIOS}\\ \textbf{(LD)}\end{tabular}}} & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}1 DOC. Nº: \CodDiv\\ Código: \CodIAE \end{tabular}} \\ \cline{4-5} 
+                      & \multicolumn{2}{c|}{}                                                                                       & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}2 DATA\\ \hspace{2cm} \Data \end{tabular}}                       \\ \hline
+                      \centering
+\multirow{2}{*}{\textbf{Cópia Nº}} & \centering \multirow{2}{*}{\textbf{Destino}}                                                                    &
+\multicolumn{3}{c|}{\textbf{Recebido por:}}                                                                                    \\ \cline{3-5}
+                      &                                                       & \textbf{Nome:}                                   & \textbf{Data:}                   & \textbf{Assinatura}                   \\ \hline \centering
+    01                  &  APR-EPL                                                     &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline&                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       &                                                     &                                  &                                       \\ \hline
+\end{tabularx}
+\end{flushleft}
+\newpage
+\SingleSpacing
+}
+
 %%% ISTO É O ANTIGO CONTEÚDO DO ARQUIVO SETUP.TEX
 
 % ---
@@ -1083,7 +1273,7 @@ Nível Inferior: \nivelInferior\\
 % ---
 % Pacotes fundamentais 
 % ---
-\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage{times}%{lmodern}			% Usa a fonte times, prevista em NPA, ao invés da Latin Modern (infelizmente)
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
