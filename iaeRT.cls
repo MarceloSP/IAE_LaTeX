@@ -28,6 +28,9 @@
 % Redefine os 4 comandos anteriores.
 \DeclareOption{oficial}{\input{nomesOficiais.tex}}
 
+% Redefine os 4 comandos anteriores.
+\DeclareOption{muitosAutores}{\def\muitosAutores}
+
 %
 % Repassa demais opcoes a memoir	
 %
@@ -862,10 +865,46 @@
 	\end{flushright}
 \end{minipage}
 
+%Elaborado por: \\
+%
+%\Autori\\
+%\Autorii\\
+%\Autoriii\\
+%\Autoriv\\
+%\Autorv\\
+%\Autorvi\\
+%\Autorvii\\
+%\Autorviii\\
+%\Autorix\\
+%\Autorx
+%
+%\vspace*{3mm}
+%
+%Revisado por:\\
+%\Revisori\\
+%\Revisorii
+%
+%\vspace*{3mm}
+%
+%Aprovado por:\\
+%\vspace*{10mm}
+%\begin{center}
+%\Aprovador
+%\end{center}
+
 Elaborado por: \\
 \vspace*{12mm}
 \parbox[c]{0.55\hsize}{\centering \Autori \\ \FuncaoAutori}
 \vspace*{3mm}
+
+% coloca o autor 2 apenas se ele tiver sido definido!
+\ifdefined\Autorii
+{\vspace*{12mm}
+\parbox[c]{0.55\hsize}{\centering \Autorii\\ \FuncaoAutorii}
+\vspace*{3mm}}
+\else{}
+\fi
+
 
 {\color{black}
 Revisado por:\\
@@ -963,7 +1002,17 @@ Nível Inferior: \nivelInferior\\
 	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
 		\begin{tabular}{l}
 			\scriptsize{9-AUTOR(ES)} \\
-			\hspace*{0.25cm} \small{\Autori}
+     		\hspace*{0.25cm} \small{\Autori}
+%			\hspace*{0.25cm} \small{\Autori}\\
+%			\hspace*{0.25cm} \small{\Autorii}\\									
+%			\hspace*{0.25cm} \small{\Autoriii}\\									
+%			\hspace*{0.25cm} \small{\Autoriv}\\
+%			\hspace*{0.25cm} \small{\Autorv}\\
+%			\hspace*{0.25cm} \small{\Autorvi}\\
+%			\hspace*{0.25cm} \small{\Autorvii}\\			
+%			\hspace*{0.25cm} \small{\Autorviii}\\
+%			\hspace*{0.25cm} \small{\Autorix}\\
+%			\hspace*{0.25cm} \small{\Autorx}					
 		\end{tabular}}
 	\\ \hline	
 	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
