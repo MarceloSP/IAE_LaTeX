@@ -865,10 +865,51 @@
 Elaborado por: \\
 
 \Autori\\
-\Autorii\\
-\Autoriii\\
-\Autoriv\\
-\Autorv
+%
+\ifdefined\Autorii
+{\Autorii\\}
+\else{}
+\fi
+%
+\ifdefined\Autoriii
+{\Autoriii\\}
+\else{}
+\fi
+%
+\ifdefined\Autoriv
+{\Autoriv\\}
+\else{}
+\fi
+%%
+\ifdefined\Autorv
+{\Autorv\\}
+\else{}
+\fi
+%%
+\ifdefined\Autorvi
+{\Autorvi\\}
+\else{}
+\fi
+%%
+\ifdefined\Autorvii
+{\Autorvii\\}
+\else{}
+\fi
+%%
+\ifdefined\Autorviii
+{\Autorviii\\}
+\else{}
+\fi
+%%
+\ifdefined\Autorix
+{\Autorix\\}
+\else{}
+\fi
+%%
+\ifdefined\Autorx
+{\Autorx\\}
+\else{}
+\fi
 
 \vspace*{3mm}
 
@@ -906,6 +947,9 @@ Aprovado por:\\
 %\vspace*{3mm}
 
 \vfill
+%
+\def\Original{VDIR-GC-DT}
+%
 % Coloque os locais onde estão o original e as cópias deste documento
 \noindent Original: \Original \\
 Cópias: \Copias
@@ -990,10 +1034,42 @@ Nível Inferior: \nivelInferior\\
 		\begin{tabular}{l}
 			\scriptsize{9-AUTOR(ES)} \\
 			\hspace*{0.25cm} \small{\Autori}\\
-			\hspace*{0.25cm} \small{\Autorii}\\
-			\hspace*{0.25cm} \small{\Autoriii}\\
-			\hspace*{0.25cm} \small{\Autoriv}\\
-			\hspace*{0.25cm} \small{\Autorv}
+			\hspace*{0.25cm} \ifdefined\Autorii
+							 {\small{\Autorii}}
+							 \else{}
+							 \fi \\
+			\hspace*{0.25cm} \ifdefined\Autoriii
+							 {\small{\Autoriii}}
+							 \else{}
+							 \fi \\
+			\hspace*{0.25cm} \ifdefined\Autoriv
+							 {\small{\Autoriv}}
+							 \else{}
+							 \fi \\
+			\hspace*{0.25cm} \ifdefined\Autorv
+							 {\small{\Autorv}}
+							 \else{}
+							 \fi \\
+			\hspace*{0.25cm} \ifdefined\Autorvi
+							 {\small{\Autorvi}}
+							 \else{}
+							 \fi \\
+			\hspace*{0.25cm} \ifdefined\Autorvii
+							 {\small{\Autorvii}}
+							 \else{}
+							 \fi \\
+			\hspace*{0.25cm} \ifdefined\Autorviii
+							 {\small{\Autorviii}}
+							 \else{}
+							 \fi \\
+			\hspace*{0.25cm} \ifdefined\Autorix
+							 {\small{\Autorix}}
+							 \else{}
+							 \fi \\
+			\hspace*{0.25cm} \ifdefined\Autorx
+							 {\small{\Autorx}}
+							 \else{}
+							 \fi \\		
 		\end{tabular}}
 	\\ \hline	
 	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
