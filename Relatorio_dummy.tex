@@ -24,14 +24,14 @@
 
 \def\Origem{ABC}
 
-\def\Aprovadori{Adão \textbf{Fulano} de Tal - Pat. Esp.}
+\def\Aprovadori{Adão \textbf{Fulano} de Tal -- Pat. Esp.}
 
 \def\FuncaoAprovadori{Chefe da TRIBO}
 
-\def\Revisori{Abel \textbf{Fulano} de Tal - Pat. Esp.}
+\def\Revisori{Abel \textbf{Fulano} de Tal -- Pat. Esp.}
 \def\FuncaoRevisori{Chefe da TRIBO-OCA}
 
-\def\Revisorii{Simão \textbf{Fulano} de Tal - Pat. Esp.}
+\def\Revisorii{Tiago \textbf{Fulano} de Tal -- Pat. Esp.}
 \def\FuncaoRevisorii{Adjunto da TRIBO-OCA}
 
 
@@ -39,41 +39,52 @@
 \def\Volume{1}
 \def\TotalVolumes{1}
 \def\Data{01/04/2020} % Campo* DD/MM/AAAA.
-
-\def\Autori{Caim \textbf{Fulano} de Tal - Pat. Esp.}
+%
+\def\Autori{Caim \textbf{Fulano} de Tal -- Pat. Esp.}
 \def\FuncaoAutori{Chefe da TRIBO-OCA-REDE}
 
-\def\Autorii{Noé \textbf{Fulano} de Tal - Pat. Esp.}
+\def\Autorii{Noé \textbf{Fulano} de Tal -- Pat. Esp.}
 \def\FuncaoAutorii{Adjunto da TRIBO-OCA-REDE}
 
-\def\Autoriii{Abraão \textbf{Fulano} de Tal - Pat. Esp.}
+\def\Autoriii{Abraão \textbf{Fulano} de Tal -- Pat. Esp.}
 \def\FuncaoAutoriii{Vice-adjunto da TRIBO-OCA-REDE}
 
-\def\Autoriv{Benjamin \textbf{Fulano} de Tal - Pat. Esp.}
+\def\Autoriv{Benjamin \textbf{Fulano} de Tal -- Pat. Esp.}
 \def\FuncaoAutoriv{Auxiliar da TRIBO-OCA-REDE}
 %
-\def\Autorv{Abimael \textbf{Fulano} de Tal - Pat. Esp.}
+\def\Autorv{Abimael \textbf{Fulano} de Tal -- Pat. Esp.}
 \def\FuncaoAutorv{Vice-adjunto da TRIBO-OCA-REDE}
 %
-\def\Autorvi{Asafe \textbf{Fulano} de Tal - Pat. Esp.}
+\def\Autorvi{Asafe \textbf{Fulano} de Tal -- Pat. Esp.}
 \def\FuncaoAutorvi{Adjunto da TRIBO-OCA-REDE}
 
-\def\Autorvii{Baruc \textbf{Fulano} de Tal - Pat. Esp.}
+\def\Autorvii{Baruc \textbf{Fulano} de Tal -- Pat. Esp.}
 \def\FuncaoAutorvii{Adjunto da TRIBO-OCA-REDE}
 
-\def\Autorviii{Hazael \textbf{Fulano} de Tal - Pat. Esp.}
+\def\Autorviii{Hazael \textbf{Fulano} de Tal -- Pat. Esp.}
 \def\FuncaoAutorviii{Adjunto da TRIBO-OCA-REDE}
 
-\def\Autorix{Simão \textbf{Fulano} de Tal - Pat. Esp.}
+\def\Autorix{Simão \textbf{Fulano} de Tal -- Pat. Esp.}
 \def\FuncaoAutorix{Adjunto da TRIBO-OCA-REDE}
 
-\def\Autorx{Zaqueu \textbf{Fulano} de Tal - Pat. Esp.}
-\def\FuncaoAutorx{Adjunto da TRIBO-OCA-REDE}
+%\def\Autorx{Zaqueu \textbf{Fulano} de Tal -- Pat. Esp.}
+%\def\FuncaoAutorx{Adjunto da TRIBO-OCA-REDE}
 
+% FAF stuff
+\def\AprovadorConteudo{\Revisori} % Alterar isso conforme necessário
+\def\ResponsavelFormatacao{} % Aparentemente pode ficar vazio! Quem diria...
+\def\AprovadorForma{} % Aparentemente pode ficar vazio! Quem diria...
+\def\AprovadorOriginal{\Aprovadori} % Alterar isso conforme necessário
 
-\def\Original{VDIR-GC-DT} % TODO: vai pra classe, dado que não muda!
-
-\def\Copias{DIV1, DIV2, DIV3}
+% Copias
+\def\NumCopias{3} % TODO: sempre número de divisões + 1?
+% Cada divisão que for ganhar uma cópia precisa ser colocada aqui. 
+% Aquelas que não forem necessárias podem ser retiradas.
+\def\Copiai{DIV1}
+\def	\Copiaii{DIV2}
+%\def\Copiaiii{DIV3}
+%\def\Copiaiv{DIV4}
+%\def\Copiav{DIV5}
 
 \def\PalavrasChave{Índio, Rede, Borboleta}
 
@@ -108,8 +119,8 @@
 \imprimircapa
 \setcounter{page}{1}
 \imprimirfolhaidentificacao
-%\imprimirfolhadestinatarios
-%\imprimirfolhafluxo
+%\imprimirfolhadestinatarios % Aparentemente a folha de destinatários passou a se chamar lista de destinatários e migrou para o fim do documento... 	
+\imprimirfolhafluxo
 
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
@@ -181,6 +192,8 @@ Teste teste teste no overleaf.
 \chapter{Organizar um relatório de 10 páginas em capítulos é ridículo}
 
 \section{Hahaha}
+
+Teste teste teste
 %\input{./Chapter1/Chapter1}
 
 % ----------------------------------------------------------
@@ -216,5 +229,6 @@ Teste teste teste no overleaf.
 \bibliography{Referencias}
 
 
+\imprimirlistadestinatarios
 
 \end{document}

@@ -1,4 +1,4 @@
-%% iaeRT.cls, v-1.1 marcelomsp araujolma lavrallr
+%% iaeRT.cls, v-1.1.1 marcelomsp araujolma lavrallr
 %% Copyright 2012-2016 by abnTeX2 group at https://www.abntex.net.br/ 
 %%
 %%
@@ -10,7 +10,7 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{iaeRT}[2021/01/08]
+\ProvidesClass{iaeRT}[2021/01/14]
 \RequirePackage{ifthen}
 
 % Opções de diagramação de sumários
@@ -27,6 +27,30 @@
 
 % Redefine os 4 comandos anteriores.
 \DeclareOption{oficial}{\input{nomesOficiais.tex}}
+
+
+% Macacos 
+\def\Original{VDIR-GC-DT} % Tipicamente isso ficava no .tex, mas como não muda nunca, trouxe pra cá.
+% esse comando gera uma string com as divisões destinatárias para cópia, concatenadas com ";"
+\def\Copias{%
+\Copiai%
+\ifdefined\Copiaii%
+{; \Copiaii}%
+\else{}%
+\fi%
+\ifdefined\Copiaiii%
+{; \Copiaiii}%
+\else{}%
+\fi%
+\ifdefined\Copiaiv%
+{; \Copiaiv}%
+\else{}%
+\fi%
+\ifdefined\Copiav%
+{; \Copiav}%
+\else{}%
+\fi%
+}
 
 %
 % Repassa demais opcoes a memoir	
@@ -948,7 +972,6 @@ Aprovado por:\\
 
 \vfill
 %
-\def\Original{VDIR-GC-DT}
 %
 % Coloque os locais onde estão o original e as cópias deste documento
 \noindent Original: \Original \\
@@ -1172,39 +1195,55 @@ Nível Inferior: \nivelInferior\\
 		\begin{tabular}{l}
 			\scriptsize{PROJETO} \\
 			%\hspace*{0.25cm} 
-			\footnotesize{Código: \InicioCodigo} \\  %Código: 590 \\
+			\footnotesize{Código: \InicioCodigo} \\
 			%\hspace*{0.25cm} 
-			\footnotesize{Título: \Projeto}  %Título: VLS
+			\footnotesize{Título: \Projeto}
 		\end{tabular}}
 	\\ \hline
 
 	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
 		\begin{tabular}{l}
 			\scriptsize{AUTOR(ES):} \\
-			%\hspace*{0.25cm}
+			
 			\small{\Autori}\\
-			%\hspace*{0.25cm}
-			\small{\Autorii}\\
-			%\hspace*{0.25cm}
-			\small{\Autoriii}\\
-			%\hspace*{0.25cm}
-			\small{\Autoriv}\\
-			%\hspace*{0.25cm} 
-			%\small{\Autorv}\\
-			%\hspace*{0.25cm} 
-			%\small{\Autorvi}\\
-			%\hspace*{0.25cm} 
-			%\small{\Autorvii}\\			
-			%\hspace*{0.25cm} 
-			%\small{\Autorviii}\\
-			%\hspace*{0.25cm} 
-			%\small{\Autorix}\\
-			%\hspace*{0.25cm}
-			%\small{\Autorx}	\\				
-			%\hspace*{0.25cm} 
-			%\small{\Autorxi}
+			\ifdefined\Autorii
+							 {\small{\Autorii}}
+							 \else{}
+							 \fi \\
+			\ifdefined\Autoriii
+							 {\small{\Autoriii}}
+							 \else{}
+							 \fi \\
+			\ifdefined\Autoriv
+							 {\small{\Autoriv}}
+							 \else{}
+							 \fi \\
+			\ifdefined\Autorv
+							 {\small{\Autorv}}
+							 \else{}
+							 \fi \\
+			\ifdefined\Autorvi
+							 {\small{\Autorvi}}
+							 \else{}
+							 \fi \\
+			\ifdefined\Autorvii
+							 {\small{\Autorvii}}
+							 \else{}
+							 \fi \\
+			\ifdefined\Autorviii
+							 {\small{\Autorviii}}
+							 \else{}
+							 \fi \\
+			\ifdefined\Autorix
+							 {\small{\Autorix}}
+							 \else{}
+							 \fi \\
+			\ifdefined\Autorx
+							 {\small{\Autorx}}
+							 \else{}
+							 \fi \\
 		\end{tabular}}
-	\\ \hline	
+	\\ \hline
 	\multicolumn{9}{|>{\hsize=\dimexpr9\hsize+16\tabcolsep+8\arrayrulewidth\relax}X|}{
 		\begin{tabular}{l}
 			\scriptsize{APROVAÇÃO DO CONTEÚDO} \\
@@ -1302,11 +1341,41 @@ Nível Inferior: \nivelInferior\\
                       \centering
 \multirow{2}{*}{\textbf{Cópia Nº}} & \centering \multirow{2}{*}{\textbf{Destino}}                                                                    &
 \multicolumn{3}{c|}{\textbf{Recebido por:}}                                                                                    \\ \cline{3-5}
-                      &                                                       & \textbf{Nome:}                                   & \textbf{Data:}                   & \textbf{Assinatura}                   \\ \hline \centering
-    01                  &  APR-EPL                                                     &                                                     &                                  &                                       \\ \hline
-                      &                                                       &                                                     &                                  &                                       \\ \hline
-                      &                                                       &                                                     &                                  &                                       \\ \hline
-                      &                                                       &                                                     &                                  &                                       \\ \hline
+                      &                                                       & \textbf{Nome:}                                   & \textbf{Data:}                   & \textbf{Assinatura}                   \\ 
+\hline 
+\centering  01                  & \centering \Copiai   &    &    &   \\ \hline
+%
+\centering\ifdefined\Copiaii
+  {02}
+  \else{}
+  \fi                           & \centering \ifdefined\Copiaii
+                                             {\Copiaii}
+                                             \else{}
+                                             \fi                   &    &    &   \\ \hline
+%
+\centering\ifdefined\Copiaiii
+  {03}
+  \else{}
+  \fi                           & \centering \ifdefined\Copiaiii
+                                             {\Copiaiii}
+                                             \else{}
+                                             \fi                   &    &    &   \\ \hline                                             
+%
+\centering\ifdefined\Copiaiv
+  {04}
+  \else{}
+  \fi                           & \centering \ifdefined\Copiaiv
+                                             {\Copiaiv}
+                                             \else{}
+                                             \fi                   &    &    &   \\ \hline                                             
+%
+\centering\ifdefined\Copiav
+  {05}
+  \else{}
+  \fi                           & \centering \ifdefined\Copiav
+                                             {\Copiav}
+                                             \else{}
+                                             \fi                   &    &    &   \\ \hline                                                                   &                                                       &                                                     &                                  &                                       \\ \hline
                       &                                                       &                                                     &                                  &                                       \\ \hline
                       &                                                       &                                                     &                                  &                                       \\ \hline
                       &                                                       &                                                     &                                  &                                       \\ \hline
